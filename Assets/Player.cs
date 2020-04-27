@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     {
         if (!gameOver)
         {
-            score.text = $"{Time.timeSinceLevelLoad}";
+            score.text = Time.timeSinceLevelLoad.ToString("F2");
         }
 
         float x = Input.GetAxis("Horizontal") * Time.fixedDeltaTime * speed;
