@@ -8,6 +8,10 @@ public class BlockSpawner : MonoBehaviour
 
     public GameObject block;
 
+    public GameObject treat;
+
+    public float treatRate = 0.1f;
+
     private float spawnInterval = 2f;
 
     private float timeOffset = 0f;
@@ -36,8 +40,15 @@ public class BlockSpawner : MonoBehaviour
         {
             if (i != randomIndex)
             {
-                // spawn
-                Instantiate(block, spawnPoints[i].position, Quaternion.identity);
+                bool shouldTreat = Random.Range(0, 100) <= treatRate*100;
+                if (shouldTreat)
+                {
+                    Instantiate(treat, spawnPoints[i].position, Quaternion.identity);
+                } else
+                {
+                    // spawn normal block
+                    Instantiate(block, spawnPoints[i].position, Quaternion.identity);
+                }
             }
         }
     }

@@ -848,6 +848,8 @@ MonoBehaviour:
   - {fileID: 150891079}
   - {fileID: 1794127261}
   block: {fileID: 5177086507017372016, guid: 37dcab34aacd84bb49cd15549a1dc630, type: 3}
+  treat: {fileID: 5797427697660154990, guid: 8d57f51e9f83e40b3b716cb7d34c3923, type: 3}
+  treatRate: 0.1
 --- !u!4 &2103974747
 Transform:
   m_ObjectHideFlags: 0

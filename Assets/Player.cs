@@ -15,20 +15,25 @@ public class Player : MonoBehaviour
 
     private bool gameOver = false;
 
+    private float points = 0f;
+
     void Start()
     {
+        points = 0f;
+
         gameOver = false;
 
         player = GetComponent<Rigidbody2D>();
 
-        score.text = "0";
+        score.text = points.ToString();
     }
 
     void FixedUpdate()
     {
         if (!gameOver)
         {
-            score.text = Time.timeSinceLevelLoad.ToString("F2");
+            points += Time.fixedDeltaTime;
+            score.text = points.ToString("F2");
         }
 
         float x = Input.GetAxis("Horizontal") * Time.fixedDeltaTime * speed;
@@ -40,9 +45,15 @@ public class Player : MonoBehaviour
         player.MovePosition(newPosition);
     }
 
-    void OnCollisionEnter2D()
+    void OnCollisionEnter2D(Collision2D other)
     {
-        gameOver = true;
-        GameManager.Instance.HandleEndGame();
+        if (other.gameObject.tag == "Treat")
+        {
+            points += 1f;
+        } else
+        {
+            gameOver = true;
+            GameManager.Instance.HandleEndGame();
+        }
     }
 }
