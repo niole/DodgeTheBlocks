@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     // access via: GameManager.Instance
     public static GameManager Instance { get; private set; }
 
+    public static float blockGravityScale = 1f;
+
     private float slowness = 10f;
 
     void Awake ()
@@ -35,4 +37,23 @@ public class GameManager : MonoBehaviour
         Time.fixedDeltaTime = Time.fixedDeltaTime * slowness;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public float IncrementGravityScale(float inc)
+    {
+        blockGravityScale += inc;
+        return blockGravityScale;
+    }
+
+    public float SetGravityScale(float newScale)
+    {
+        blockGravityScale = newScale;
+        Debug.Log($"SetGravityScale {blockGravityScale}");
+        return blockGravityScale;
+    }
+
+    public float GetGravityScale()
+    {
+        return blockGravityScale;
+    }
+
 }

@@ -50,6 +50,9 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Treat")
         {
             points += 1f;
+        } else if (other.gameObject.tag == "Slow")
+        {
+            GameManager.Instance.SetGravityScale(1f);
         } else
         {
             gameOver = true;
